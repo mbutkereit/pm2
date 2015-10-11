@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!DOCTYPE geraete SYSTEM "Geraete.dtd">
+<geraete>
+	<geraet name="Raspberry Pi - Model b">
+		<ip>192.168.2.1</ip>
+		<sensoren>
+			<sensore typ="Temperatur">
+				<ort>Wohnzimmer</ort>
+				<wert>22.4</wert>
+			</sensore>
+			<sensore>
+				<ort>Küche</ort>
+				<wert>-1.2323</wert>
+			</sensore>
+			<sensore typ="Temperatur">
+				<ort>Luftfeuchtigkeit</ort>
+				<wert>63.8</wert>
+			</sensore>
+		</sensoren>
+	</geraet>
+</geraete>

@@ -1,0 +1,7 @@
+
+<!ELEMENT geraete (geraet*)>
+<!ELEMENT geraet (ip,sensoren)>
+<!ATTLIST geraet name CDATA #IMPLIED>
+<!ELEMENT sensoren (sensore*)>
+<!ELEMENT sensore (ort,wert)>
+<!ATTLIST sensore typ CDATA #IMPLIED>
