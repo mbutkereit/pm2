@@ -7,12 +7,10 @@ import java.util.List;
 /**
  * 
  * Eine Klasse welche einen Studenten Representieren soll.
- * 
- * @author marvin
  *
  */
 public class Student implements Comparable<Student>, Comparator<Student> {
-	
+
 	/**
 	 * Der Vorname des Studenten.
 	 */
@@ -44,15 +42,14 @@ public class Student implements Comparable<Student>, Comparator<Student> {
 	public int compareTo(Student student) throws NullPointerException {
 		int response = 0;
 
-		// wenn ein studen null ist.
 		if (student == null) {
 			throw new NullPointerException();
 		}
-		
+
 		if (student.getMatrikelnummer() < this.getMatrikelnummer()) {
 			response = 1;
 		}
-		
+
 		if (student.getMatrikelnummer() > this.getMatrikelnummer()) {
 			response = -1;
 		}
@@ -61,73 +58,61 @@ public class Student implements Comparable<Student>, Comparator<Student> {
 	}
 
 	/**
-	 * Getter für Vorname.
-	 * 
-	 * @return
+	 * Getter fuer Vorname.
 	 */
 	public String getVorname() {
 		return vorname;
 	}
 
 	/**
-	 * Setter für Vorname.
-	 * 
-	 * @return
+	 * Setter fuer Vorname.
 	 */
 	public void setVorname(String vorname) {
 		this.vorname = vorname;
 	}
 
 	/**
-	 * Getter für Nachname.
-	 * 
-	 * @return
+	 * Getter fuer Nachname.
 	 */
 	public String getNachname() {
 		return nachname;
 	}
 
 	/**
-	 * Setter für Nachname.
-	 * 
-	 * @return
+	 * Setter fuer Nachname.
 	 */
 	public void setNachname(String nachname) {
 		this.nachname = nachname;
 	}
 
 	/**
-	 * Getter für Matrikelnummer.
-	 * 
-	 * @return
+	 * Getter fuer Matrikelnummer.
 	 */
 	public int getMatrikelnummer() {
 		return matrikelnummer;
 	}
 
 	/**
-	 * Setter für Matrikelnummer.
-	 * 
-	 * @return
+	 * Setter fuer Matrikelnummer.
 	 */
 	public void setMatrikelnummer(int matrikelnummer) {
 		this.matrikelnummer = matrikelnummer;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gibt die Liste an Pruefungsleistung zurueck.
 	 */
 	public List<Pruefungsleistung> getListeVonPruefungsleistung() {
 		return listeVonPruefungsleistung;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Fuegt eine Pruefungsleistung hinzu.
 	 */
 	public void addPruefungsleistung(Pruefungsleistung leistung) {
-		this.listeVonPruefungsleistung.add(leistung);
+		if (leistung != null) {
+			this.listeVonPruefungsleistung.add(leistung);
+		}
 	}
 
 	@Override
@@ -137,15 +122,12 @@ public class Student implements Comparable<Student>, Comparator<Student> {
 		if (student1 == null || student2 == null) {
 			throw new NullPointerException();
 		}
-		
+
 		int response = student1.vorname.compareTo(student2.vorname);
 		if (response == 0) {
 			response = student1.nachname.compareTo(student2.nachname);
-			if (student1.vorname.equals(student2.vorname)
-					&& student1.nachname.equals(student2.nachname)) {
-				response = 0;
-			}
 		}
+		
 		return response;
 	}
 

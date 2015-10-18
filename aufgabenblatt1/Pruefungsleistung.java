@@ -1,61 +1,58 @@
 package aufgabenblatt1;
 
 /**
+ * Eine Klasse welche eine 
+ * Pruefungsleistung representiert.
  * 
- * @author marvin
- *
  */
 public class Pruefungsleistung {
-	
-/**
- * 
- */
- private String nameDesModules;
- 
- /**
-  * 
-  */
- private int note;
- 
- /**
-  * 
-  * @param nameDesModules
-  * @param note
-  */
- public Pruefungsleistung(String nameDesModules,int note){
-	 this.note = note ;
-	 this.nameDesModules= nameDesModules;
- }
 
- /**
-  * 
-  * @return
-  */
-public String getNameDesModules() {
-	return nameDesModules;
-}
+	/**
+	 * Name des Modules.
+	 */
+	private String nameDesModules;
 
-/**
- * 
- * @param nameDesModules
- */
-public void setNameDesModules(String nameDesModules) {
-	this.nameDesModules = nameDesModules;
-}
+	/**
+	 * Wert der Note.
+	 */
+	private int note;
 
-/**
- * 
- * @return
- */
-public int getNote() {
-	return note;
-}
+	/**
+	 * Konstruktor.
+	 * 
+	 * @param nameDesModules
+	 * @param note
+	 */
+	public Pruefungsleistung(String nameDesModules, int note) {
+		this.note = note;
+		this.nameDesModules = nameDesModules;
+	}
 
-/**
- * 
- * @param note
- */
-public void setNote(int note) {
-	this.note = note;
-}
+	/**
+	 * Getter fuer nameDesModules.
+	 */
+	public String getNameDesModules() {
+		return nameDesModules;
+	}
+
+	/**
+	 * Setter fuer nameDesModules.
+	 */
+	public void setNameDesModules(String nameDesModules) {
+		this.nameDesModules = nameDesModules;
+	}
+
+	/**
+	 * Getter fuer Note.
+	 */
+	public int getNote() {
+		return note;
+	}
+
+	/**
+	 * Setter fuer note.
+	 */
+	public void setNote(int note) {
+		this.note = note;
+	}
 }

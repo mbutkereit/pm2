@@ -1,9 +1,7 @@
 package aufgabenblatt1;
 
 /**
- * 
- * @author marvin
- *
+ * Main Methode.
  */
 public class Main {
 
@@ -14,7 +12,7 @@ public class Main {
 	
 	/**
 	 * 
-	 * Überprüfen ob das erste Element eine Zahl ist.
+	 * Überpruefen ob das erste Element eine Zahl ist.
 	 * 
 	 * @return boolean
 	 * 	Ist das erste Element eine Zahl

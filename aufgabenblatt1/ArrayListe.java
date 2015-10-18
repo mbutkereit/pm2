@@ -1,6 +1,7 @@
 package aufgabenblatt1;
 
 /**
+ * Eigen Implementiertung einer ArrayList.
  * 
  * @author marvin
  *
@@ -26,6 +27,7 @@ public class ArrayListe<T extends Comparable<T>> {
 	}
 
 	/**
+	 * Hinzufuegen von Elementen.
 	 * 
 	 * @param element
 	 */
@@ -40,99 +42,111 @@ public class ArrayListe<T extends Comparable<T>> {
 		elemente = newElementeArray;
 	}
 
-	public Object get(int index) throws IndexOutOfBoundsException {
+	public T get(int index) throws IndexOutOfBoundsException {
 		if (elemente.length < index) {
 			throw new IndexOutOfBoundsException();
 		}
-		return elemente[index];
+		return (T) elemente[index];
 
 	};
 
 	/**
+	 * Entfernen von einem T objekt aus der Liste.
 	 * 
 	 * @param element
 	 */
 	public void entfernen(T element) {
+		Boolean istEntfernt = false;
 		for (int i = 0; i < elemente.length; i++) {
 			if (elemente[i] == element) {
 				elemente[i] = null;
-				anzahlElemente--;
+				istEntfernt = true;
 				break;
 			}
-			;
+		}
+		if (istEntfernt == true) {
+			aufrauemenArray();
 		}
 	}
 
 	/**
+	 * Verkleinert das Array um ein Element.
+	 */
+	private void aufrauemenArray(){
+		int neueLaenge = elemente.length-1;
+		Object[] newElementeArray = new Object[neueLaenge];
+		int c = 0;
+		for (int i = 0; i < elemente.length; i++) {
+			if(elemente[i] != null){
+			newElementeArray[c] = elemente[i];
+			c++;
+			}
+		}
+		elemente = newElementeArray;
+		anzahlElemente = elemente.length;
+	}
+
+	/**
+	 * Entfernt ein Element aus der Liste an einen übergebenen index.
 	 * 
 	 * @param index
 	 */
 	public void entfernenElementeAnIndex(int index) {
 		elemente[index] = null;
-		anzahlElemente--;
+		aufrauemenArray();
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Getter für die Anzahl der Elemente.
 	 */
 	public int getAnzahlElemente() {
 		return elemente.length;
 	}
 
-	/**
-  * 
-  */
+	@Override
 	public String toString() {
 		return "Es sind " + getAnzahlElemente() + " Elemente.";
 
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gibt das kleinste element zurück.
 	 */
-	public Object getKleinstesElement() {
-		/*
+	public T getKleinstesElement() {
+
 		boolean istSet = false;
-		int zahl;
+		Integer zahl = 0;
 		// nur möglich wenn das element number ist;
 		for (int i = 0; i < elemente.length; i++) {
 			if (elemente[i] instanceof Number) {
 				if (istSet == false) {
 					zahl = (int) elemente[i];
 					istSet = true;
+				} else if (zahl > (int) elemente[i]) {
+					zahl = (int) elemente[i];
 				}
 			}
-		}*/
-		if(elemente[0] instanceof Number){
-		Object activeCurrent = elemente[0];
-		for (int i = 0; i < elemente.length; i++) {
-			Object test = elemente[i];
-			if(	(int)test<(int)activeCurrent){
-				activeCurrent =test;
-			}
-
 		}
-		return (Object)activeCurrent;
+		if (istSet == true) {
+			return (T) zahl;
 		}
 		return null;
-		
+
 	}
-	
+
 	/**
 	 * Nur möglich mit Upperbound
 	 */
-	private Object upperBoundKleinstesElement(){
-		T activeCurrent = (T)elemente[0];
+	public T upperBoundKleinstesElement() {
+		T activeCurrent = (T) elemente[0];
 		for (int i = 0; i < elemente.length; i++) {
 			T test = (T) elemente[i];
-			if(	test.compareTo(activeCurrent) == -1){
-				activeCurrent =test;
+			if (test.compareTo(activeCurrent) == -1) {
+				activeCurrent = test;
 			}
 
 		}
-		return (Object)activeCurrent;
-		
+		return activeCurrent;
+
 	}
 }
