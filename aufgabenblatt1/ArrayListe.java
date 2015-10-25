@@ -72,14 +72,14 @@ public class ArrayListe<T extends Comparable<T>> {
 	/**
 	 * Verkleinert das Array um ein Element.
 	 */
-	private void aufrauemenArray(){
-		int neueLaenge = elemente.length-1;
+	private void aufrauemenArray() {
+		int neueLaenge = elemente.length - 1;
 		Object[] newElementeArray = new Object[neueLaenge];
 		int c = 0;
 		for (int i = 0; i < elemente.length; i++) {
-			if(elemente[i] != null){
-			newElementeArray[c] = elemente[i];
-			c++;
+			if (elemente[i] != null) {
+				newElementeArray[c] = elemente[i];
+				c++;
 			}
 		}
 		elemente = newElementeArray;
@@ -132,6 +132,19 @@ public class ArrayListe<T extends Comparable<T>> {
 		}
 		return null;
 
+	}
+	
+	/**
+	 * Addiere alle Zahlen.
+	 */
+	public int summeBerechenen() {
+		int zahl = 0;
+		for (int i = 0; i < elemente.length; i++) {
+			if (elemente[i] instanceof Integer) {
+				zahl += (int)elemente[i];
+			}
+		}
+		return zahl;
 	}
 
 	/**

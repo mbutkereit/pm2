@@ -127,7 +127,7 @@ public class Student implements Comparable<Student>, Comparator<Student> {
 		if (response == 0) {
 			response = student1.nachname.compareTo(student2.nachname);
 		}
-		
+
 		return response;
 	}
 

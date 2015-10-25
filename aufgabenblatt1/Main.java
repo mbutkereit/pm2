@@ -9,17 +9,18 @@ public class Main {
 		System.out.println("Test");
 
 	}
-	
+
 	/**
 	 * 
 	 * Überpruefen ob das erste Element eine Zahl ist.
 	 * 
 	 * @return boolean
-	 * 	Ist das erste Element eine Zahl
-	 *  TRUE oder FALSE wenn nicht.
+	 * 		 Ist das erste Element eine Zahl TRUE oder FALSE wenn
+	 *         nicht.
 	 */
-	public static <T extends Comparable<T>> boolean erstesElementZahl(ArrayListe<T> list){
-		if(list.get(0) instanceof Number){
+	public static <T extends Comparable<T>> boolean erstesElementZahl(
+			ArrayListe<T> list) {
+		if (list.get(0) instanceof Number) {
 			return true;
 		}
 		return false;

@@ -1,8 +1,7 @@
 package aufgabenblatt1;
 
 /**
- * Eine Klasse welche eine 
- * Pruefungsleistung representiert.
+ * Eine Klasse welche eine Pruefungsleistung representiert.
  * 
  */
 public class Pruefungsleistung {
