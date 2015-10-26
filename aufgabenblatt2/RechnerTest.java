@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import aufgabenblatt2.Rechner.Operation;
 
+/**
+ * Test Klasse für Rechner.
+ */
 public class RechnerTest {
 	
 	private static final double DELTA = 1e-15;

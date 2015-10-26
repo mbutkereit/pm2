@@ -3,19 +3,32 @@ package aufgabenblatt2;
 public class Rennauto extends Thread implements Comparable<Rennauto> {
 
 	/**
-	 * 
+	 *  Laenge der Strecke.
 	 */
 	private int laengeDerStrecke;
 
 	/**
-	 * In m/s
+	 * Durchschnittsgeschwindigkeit in m/s.
 	 */
 	private int durchschnittsGeschwindigkeit;
 
+	/**
+	 * Name des Rennfahrers.
+	 */
 	private String name;
 
+	/**
+	 * Zeit wenn das Auto zum stehen kommt.
+	 */
 	private double endZeit;
 
+	/**
+	 * Konstruktor.
+	 * 
+	 * @param name
+	 * @param laengeDerStrecke
+	 * @param durchSchnittsGeschwindigkeit
+	 */
 	public Rennauto(String name, int laengeDerStrecke,
 			int durchSchnittsGeschwindigkeit) {
 		this.name = name;
@@ -23,6 +36,11 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 		this.durchschnittsGeschwindigkeit = durchSchnittsGeschwindigkeit;
 	}
 
+	/**
+	 * Thread Method.
+	 * 
+	 * Rennauto fahrt die Strecke ab.
+	 */
 	public void run() {
 		double startTime = System.currentTimeMillis();
 		double value = Math.round((Math.random() * 4));
@@ -44,10 +62,16 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 		}
 	}
 	
+	/**
+	 * CompareTo um die Rennautos nach Stop Zeiten zu Sortieren.
+	 */
 	public int compareTo(Rennauto auto){
 		return (int)(this.endZeit - auto.endZeit);
 	}
 
+	/**
+	 * Ausgabe der gefahrenen Zeit.
+	 */
 	public String toString() {
 		return "Fahrer:"+this.name + " : " + this.endZeit / 1000+ " Sekunden";
 	}

@@ -12,7 +12,7 @@ public class Main {
 
 	/**
 	 * 
-	 * Überpruefen ob das erste Element eine Zahl ist.
+	 * Ueberpruefen ob das erste Element eine Zahl ist.
 	 * 
 	 * @return boolean
 	 * 		 Ist das erste Element eine Zahl TRUE oder FALSE wenn

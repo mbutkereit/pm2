@@ -6,6 +6,7 @@ import java.util.List;
 public class Rennen {
 
 	public static void main(String[] args) {
+		
 		List<Rennauto> rennWagen = new ArrayList<Rennauto>();
 
 		Rennabbruch rennabbruch = new Rennabbruch(rennWagen);
@@ -17,6 +18,7 @@ public class Rennen {
 		rennWagen.add(0, vettel);
 		rennWagen.add(1, schumi);
 		rennWagen.add(2, ricardo);
+		
 		for (Rennauto car : rennWagen) {
 			car.start();
 		}
@@ -33,9 +35,11 @@ public class Rennen {
 			}
 
 		} while (rennWagen.size() > imZiel);
+		
 		if (rennabbruch.isAlive()) {
 			rennabbruch.interrupt();
 		}
+		
 		rennWagen.sort(null);
 		System.out.println("Ergebnis:");
 		for (Rennauto auto : rennWagen) {

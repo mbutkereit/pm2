@@ -13,7 +13,7 @@ public class StreamsTest {
 	@Test
 	public void testAdditionRechner() {
 		List<String> liste = Arrays.asList(new String[] { "Eingabe ",
-				"Ã„uÃŸeres ", null, "Strassen-Feger", " ein Haus" });
+				"Äußeres ", null, "Strassen-Feger", " ein Haus" });
 
 		liste = liste
 				.stream()
@@ -27,8 +27,8 @@ public class StreamsTest {
 					return x.toUpperCase();
 				})
 				.map(x -> {
-					String so = x.replaceAll("Ã„", "AE").replaceAll("Ã–", "AE")
-							.replaceAll("Ãœ", "UE").replaceAll("ÃŸ", "SS");
+					String so = x.replaceAll("Ä", "AE").replaceAll("Ä", "AE")
+							.replaceAll("Ü", "UE").replaceAll("ß", "SS");
 					return so;
 				}).map(x -> {
 					return x.trim();
