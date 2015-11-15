@@ -3,25 +3,68 @@ package aufgabenblatt2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ */
 public class Rennen {
 
-	public static void main(String[] args) {
-		List<Rennauto> rennWagen = new ArrayList<Rennauto>();
+	/**
+	 * 
+	 */
+	private List<Rennauto> rennWagen;
 
-		Rennabbruch rennabbruch = new Rennabbruch(rennWagen);
+	/**
+	 * 
+	 */
+	private int streckenLaenge;
 
-		Rennauto vettel = new Rennauto("Vettel", 10, 1);
-		Rennauto schumi = new Rennauto("Schumi", 10, 1);
-		Rennauto ricardo = new Rennauto("Ricardo", 10, 1);
+	/**
+	 * 
+	 */
+	private Rennabbruch rennabbruch;
 
-		rennWagen.add(0, vettel);
-		rennWagen.add(1, schumi);
-		rennWagen.add(2, ricardo);
-		for (Rennauto car : rennWagen) {
-			car.start();
+
+	/**
+	 * 
+	 * @param streckenLaenge
+	 * @param rennabbruch
+	 */
+	public Rennen(int streckenLaenge, Rennabbruch rennabbruch) {
+		this.rennWagen = new ArrayList<Rennauto>();
+		this.streckenLaenge = streckenLaenge;
+		this.rennabbruch = rennabbruch;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 * @param durchSchnittsGeschwindigkeit
+	 */
+	public void addRennFahrer(String name, int durchSchnittsGeschwindigkeit) {
+		if (durchSchnittsGeschwindigkeit > 0 && name != null) {
+			rennWagen.add(new Rennauto(name, this.streckenLaenge,
+					durchSchnittsGeschwindigkeit));
 		}
+	}
 
-		rennabbruch.start();
+	/**
+	 * 
+	 */
+	public void startRennen() {
+		if (rennWagen.size() > 0) {
+			for (Rennauto car : rennWagen) {
+				car.start();
+			}
+			if (rennabbruch != null) {
+				rennabbruch.start();
+			}
+		}
+	}
+
+	/**
+	 * 
+	 */
+	public void stopRacing() {
 
 		int imZiel = 0;
 		do {
@@ -40,6 +83,23 @@ public class Rennen {
 		System.out.println("Ergebnis:");
 		for (Rennauto auto : rennWagen) {
 			System.out.println(auto);
+		}
+	}
+
+	public static void main(String[] args) {
+
+		Rennen nuerburgring = new Rennen(100, null);
+		// Rennabbruch rennabbruch = new Rennabbruch(rennWagen);
+
+		nuerburgring.addRennFahrer("Vettel", 1);
+		nuerburgring.addRennFahrer("Schumi", 2);
+		nuerburgring.addRennFahrer("Ricardo", 3);
+
+		nuerburgring.startRennen();
+		// rennabbruch.start();
+
+		while (true){
+			
 		}
 	}
 

@@ -17,24 +17,16 @@ public class StreamsTest {
 
 		liste = liste
 				.stream()
-				.filter(x -> {
-					return x != null;
-				})
-				.map(x -> {
-					return x.trim();
-				})
-				.map(x -> {
-					return x.toUpperCase();
-				})
+				.filter(x -> x != null)
+				.map(x ->  x.trim() )
+				.map(x ->  x.toUpperCase())
 				.map(x -> {
 					String so = x.replaceAll("Ä", "AE").replaceAll("Ö", "AE")
 							.replaceAll("Ü", "UE").replaceAll("ß", "SS");
 					return so;
-				}).map(x -> {
-					return x.trim();
-				}).map(str -> {
-					return str.length() > 8 ? str.substring(0, 8) : str;
-				}).collect(Collectors.toList());
+				}).map(x ->x.trim())
+				.map(str -> str.length() > 8 ? str.substring(0, 8) : str)
+				.collect(Collectors.toList());
 		
 		assertEquals(liste.get(0),"EINGABE");
 		assertEquals(liste.get(1),"AEUSSERE");

@@ -1,16 +1,31 @@
 package aufgabenblatt2;
 
 import java.util.List;
-
+/**
+ * 
+ * @author marvin
+ *
+ */
 public class Rennabbruch extends Thread {
-	List<Rennauto> list;
+	
+	/**
+	 * 
+	 */
+	private List<Rennauto> list;
 
+	/**
+	 * 
+	 * @param list
+	 */
 	public Rennabbruch(List<Rennauto> list) {
 		this.list = list;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
-		double d = Math.random();
+		double d;
 		while (true) {
 			d = Math.random();
 			try {
