@@ -42,6 +42,13 @@ public class ArrayListe<T extends Comparable<T>> {
 		elemente = newElementeArray;
 	}
 
+	/**
+	 * Get ein Element an der Position index.
+	 * 
+	 * @param index
+	 * @return
+	 * @throws IndexOutOfBoundsException
+	 */
 	public T get(int index) throws IndexOutOfBoundsException {
 		if (elemente.length < index) {
 			throw new IndexOutOfBoundsException();
@@ -97,7 +104,7 @@ public class ArrayListe<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Getter fÃ¼r die Anzahl der Elemente.
+	 * Getter fuer die Anzahl der Elemente.
 	 */
 	public int getAnzahlElemente() {
 		return elemente.length;
@@ -110,13 +117,13 @@ public class ArrayListe<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Gibt das kleinste element zurÃ¼ck.
+	 * Gibt das kleinste element zurück.
 	 */
 	public T getKleinstesElement() {
 
 		boolean istSet = false;
 		Integer zahl = 0;
-		// nur mÃ¶glich wenn das element number ist;
+		// nur möglich wenn das element number ist;
 		for (int i = 0; i < elemente.length; i++) {
 			if (elemente[i] instanceof Number) {
 				if (istSet == false) {
@@ -133,7 +140,7 @@ public class ArrayListe<T extends Comparable<T>> {
 		return null;
 
 	}
-	
+
 	/**
 	 * Addiere alle Zahlen.
 	 */
@@ -141,14 +148,14 @@ public class ArrayListe<T extends Comparable<T>> {
 		int zahl = 0;
 		for (int i = 0; i < elemente.length; i++) {
 			if (elemente[i] instanceof Integer) {
-				zahl += (int)elemente[i];
+				zahl += (int) elemente[i];
 			}
 		}
 		return zahl;
 	}
 
 	/**
-	 * Nur mÃ¶glich mit Upperbound
+	 * Nur möglich mit Upperbound
 	 */
 	public T upperBoundKleinstesElement() {
 		T activeCurrent = (T) elemente[0];

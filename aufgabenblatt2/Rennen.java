@@ -7,10 +7,9 @@ import java.util.List;
  * 
  */
 public class Rennen {
-
-	/**
-	 * 
-	 */
+/**
+ * 
+ */
 	private List<Rennauto> rennWagen;
 
 	/**

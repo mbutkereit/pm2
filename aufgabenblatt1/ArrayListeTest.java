@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * 
+ *  Test Klasse für ArrayListe.
+ *  
  * @author marvin
  *
  */
@@ -118,7 +119,7 @@ public class ArrayListeTest {
 	}
 
 	@Test
-	public void testHinzufÃ¼genEinesObjektes() {
+	public void testHinzufuegenEinesObjektes() {
 		ArrayListe<Integer> list = new ArrayListe<Integer>();
 		list.hinzufuegen(21);
 		assertEquals(21, (int) list.get(0));
@@ -148,6 +149,14 @@ public class ArrayListeTest {
 		listString.hinzufuegen("Test");
 		assertEquals(0, list.summeBerechenen());
 		
+	}
+	
+	public void testJenke(){
+		ArrayListe<Integer> list = new ArrayListe<Integer>();
+		list.hinzufuegen(21);
+		list.hinzufuegen(42);
+		list.entfernen(12);
+		assertEquals(2, list.getAnzahlElemente());
 	}
 
 }

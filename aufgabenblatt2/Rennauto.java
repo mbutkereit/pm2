@@ -8,26 +8,38 @@ package aufgabenblatt2;
 public class Rennauto extends Thread implements Comparable<Rennauto> {
 
 	/**
-	 * 
+	 *  Laenge der Strecke.
 	 */
 	private int laengeDerStrecke;
 
 	/**
-	 * In m/s
+	 * Durchschnittsgeschwindigkeit in m/s.
 	 */
 	private int durchschnittsGeschwindigkeit;
 
 	/**
+<<<<<<< HEAD
 	 * 
+=======
+	 * Name des Rennfahrers.
+>>>>>>> 61566b5572e37aafd2e81f95b9b42af2de136b9b
 	 */
 	private String name;
 
 	/**
+<<<<<<< HEAD
 	 * 
+=======
+	 * Zeit wenn das Auto zum stehen kommt.
+>>>>>>> 61566b5572e37aafd2e81f95b9b42af2de136b9b
 	 */
 	private double endZeit;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Konstruktor.
+>>>>>>> 61566b5572e37aafd2e81f95b9b42af2de136b9b
 	 * 
 	 * @param name
 	 * @param laengeDerStrecke
@@ -41,8 +53,15 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 	}
 
 	/**
+<<<<<<< HEAD
  * 
  */
+=======
+	 * Thread Method.
+	 * 
+	 * Rennauto fahrt die Strecke ab.
+	 */
+>>>>>>> 61566b5572e37aafd2e81f95b9b42af2de136b9b
 	public void run() {
 		double startTime = System.currentTimeMillis();
 		double value = Math.round((Math.random() * 4));
@@ -64,6 +83,7 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 			value = Math.round((Math.random() * 4));
 		}
 	}
+<<<<<<< HEAD
 
 	/**
  * 
@@ -80,6 +100,19 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 	/**
  * 
  */
+=======
+	
+	/**
+	 * CompareTo um die Rennautos nach Stop Zeiten zu Sortieren.
+	 */
+	public int compareTo(Rennauto auto){
+		return (int)(this.endZeit - auto.endZeit);
+	}
+
+	/**
+	 * Ausgabe der gefahrenen Zeit.
+	 */
+>>>>>>> 61566b5572e37aafd2e81f95b9b42af2de136b9b
 	public String toString() {
 		return "Fahrer:" + this.name + " : " + this.endZeit / 1000
 				+ " Sekunden";
