@@ -26,7 +26,7 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 	 * Zeit wenn das Auto zum stehen kommt.
 	 */
 	private double endZeit;
-	
+
 	/**
 	 * Die gefahrenen Meter.
 	 */
@@ -40,7 +40,7 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 		this.name = name != null ? name : "Player";
 		this.laengeDerStrecke = laengeDerStrecke;
 		this.durchschnittsGeschwindigkeit = durchSchnittsGeschwindigkeit;
-		this.gefahreneMeter =0 ;
+		this.gefahreneMeter = 0;
 	}
 
 	/**
@@ -53,25 +53,32 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 		double value = Math.round((Math.random() * 4));
 		while (!this.isInterrupted()) {
 			try {
+
 				sleep(800 + ((int) value * 100));
 				this.endZeit = (int) (System.currentTimeMillis() - startTime);
 				gefahreneMeter += this.durchschnittsGeschwindigkeit;
-				if (gefahreneMeter < this.laengeDerStrecke) {
-					System.out.println("Fahrer:" + this.name + " : "
-							+ gefahreneMeter + "/" + laengeDerStrecke);
-				}
 				if (gefahreneMeter >= this.laengeDerStrecke) {
 					gefahreneMeter = laengeDerStrecke;
-					System.out.println("Fahrer:" + this.name + " : "
-							+ gefahreneMeter + "/" + laengeDerStrecke);
-					this.endZeit = (int) (System.currentTimeMillis() - startTime);
+					ausgebenDerGefahrenenMeter();
 					break;
+				} else {
+					ausgebenDerGefahrenenMeter();
 				}
 			} catch (InterruptedException e) {
 				break;
+			} finally {
+				this.endZeit = (int) (System.currentTimeMillis() - startTime);
 			}
 			value = Math.round((Math.random() * 4));
 		}
+	}
+
+	/**
+	 * Gibt die gefahrenen Runden aus.
+	 */
+	private void ausgebenDerGefahrenenMeter(){
+		System.err.println("Fahrer:" + this.name + " : "
+				+ gefahreneMeter + "/" + laengeDerStrecke);
 	}
 
 	/**
@@ -88,11 +95,11 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 		return validateByTime(auto);
 
 	}
-	
+
 	/**
 	 * Zeitbasierte sortierung.
 	 */
-	private int validateByTime(Rennauto auto){
+	private int validateByTime(Rennauto auto) {
 		if (this.endZeit < auto.endZeit) {
 			return -1;
 		} else if (this.endZeit > auto.endZeit) {

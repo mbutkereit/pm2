@@ -38,7 +38,7 @@ public class Rennabbruch extends Thread {
 					break;
 				}
 				if (d < 0.1) {
-					System.out.println("Rennen muss Abgebrochen werden.");
+					System.err.println("Rennen muss Abgebrochen werden.");
 					for (Rennauto auto : list) {
 						auto.interrupt();
 					}

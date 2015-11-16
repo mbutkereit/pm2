@@ -30,13 +30,14 @@ public class Rennen {
 		this.rennWagen = new ArrayList<Rennauto>();
 		this.streckenLaenge = streckenLaenge > 0 ? streckenLaenge : 10;
 		this.rennabbruch = rennabbruch;
-				if(rennabbruch != null){
-					rennabbruch.addRennAutoListe(rennWagen);
-				}
+		
+		if (rennabbruch != null) {
+			rennabbruch.addRennAutoListe(rennWagen);
+		}
 	}
 
 	/**
-	 * Fügt einen Rennfahrer hinzu.
+	 * Fuegt einen Rennfahrer hinzu.
 	 */
 	public void addRennFahrer(String name, int durchSchnittsGeschwindigkeit) {
 		if (durchSchnittsGeschwindigkeit > 0 && name != null) {
@@ -61,15 +62,14 @@ public class Rennen {
 	}
 
 	/**
-	 * 
+	 * Beendet das Rennen
 	 */
 	private void stopRacing() {
-		
 		for (Rennauto car : rennWagen) {
 			try {
 				car.join();
 			} catch (Exception e) {
-
+				// ignore exception.
 			}
 		}
 
@@ -98,7 +98,7 @@ public class Rennen {
 	 * Main Methode
 	 */
 	public static void main(String[] args) {
-		
+
 		Rennen nuerburgring = new Rennen(10, new Rennabbruch());
 
 		nuerburgring.addRennFahrer("Vettel", 1);
