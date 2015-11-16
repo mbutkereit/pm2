@@ -7,7 +7,7 @@ import org.junit.Test;
 import aufgabenblatt2.Rechner.Operation;
 
 /**
- * Test Klasse für Rechner.
+ * Test Klasse fuer Rechner.
  */
 public class RechnerTest {
 	
@@ -18,6 +18,24 @@ public class RechnerTest {
 		Rechner rechner = new Rechner();
 		double addition = rechner.berechne(Operation.ADDITION, 42, 42);
 		assertEquals(addition,84,DELTA);
+		
+		addition = rechner.berechne(Operation.ADDITION, 0, 0);
+		assertEquals(addition,0,DELTA);
+		
+		addition = rechner.berechne(Operation.ADDITION, 0, 42);
+		assertEquals(addition,42,DELTA);
+		
+		addition = rechner.berechne(Operation.ADDITION, 42, 0);
+		assertEquals(addition,42,DELTA);
+		
+		addition = rechner.berechne(Operation.ADDITION, 42, -32);
+		assertEquals(addition,10,DELTA);
+		
+		addition = rechner.berechne(Operation.ADDITION, -42, -32);
+		assertEquals(addition,-74,DELTA);
+		
+		addition = rechner.berechne(null, 42, -32);
+		assertEquals(addition,0,DELTA);
 	}
 	
 	@Test
