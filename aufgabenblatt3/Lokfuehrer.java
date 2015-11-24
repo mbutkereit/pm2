@@ -1,27 +1,36 @@
 package aufgabenblatt3;
 
+/**
+ * Ein Lokfuehrer fuer ein Bahnhof.
+ *
+ */
 public class Lokfuehrer extends Thread {
 
-	private String letzteTaetigkeit;
-	
-	private Bahnhof arbeitsPlatz;
-	
-	public Lokfuehrer(Bahnhof arbeitsPlatz){
-		this.letzteTaetigkeit = "nichts gemacht!";
-		this.arbeitsPlatz = arbeitsPlatz;
+	/**
+	 * Die durchzuführende Tätigkeit.
+	 */
+	private AufgabeStrategy aufgabe;
+
+	/**
+	 * Konstruktor.
+	 */
+	public Lokfuehrer(AufgabeStrategy aufgabe) {
+		this.aufgabe =aufgabe;
 	}
-	
-	public void zugAufEinGleisEinfahren(Zug zug,int gleis){
-		this.arbeitsPlatz.zugEinfahren(zug,gleis);
-		this.letzteTaetigkeit = "den Zug gerade aufs " +gleis +" abgestellt";
+
+	/**
+	 * Ausführen der Taetigkeit.
+	 */
+	public void run() {
+		this.aufgabe.arbeiten();
+		System.err.println(this);
 	}
-	public void zugAufEinGleisAusfahrenn(int gleis){
-		this.arbeitsPlatz.zugAusfahren(gleis);
-		this.letzteTaetigkeit = "den Zug von " +gleis +"Weg gefahren";
+
+	/**
+	 * Ausgabe der Taetigkeit.
+	 */
+	public String toString() {
+		return "Ich habe gerade " + aufgabe;
 	}
-	
-	public String toString(){
-		return "ich habe gerade " + this.letzteTaetigkeit;
-	}
-	
+
 }

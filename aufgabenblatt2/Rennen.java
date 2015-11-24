@@ -1,6 +1,7 @@
 package aufgabenblatt2;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -86,7 +87,7 @@ public class Rennen {
 	 */
 	public void ausgabeErgebnis() {
 		if (rennWagen.size() > 0) {
-			rennWagen.sort(null);
+			Collections.sort(rennWagen);
 			System.out.println("Ergebnis:");
 			for (Rennauto auto : rennWagen) {
 				System.out.println(auto);

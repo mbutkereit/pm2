@@ -37,7 +37,7 @@ public class Rechner {
 	/**
 	 * Benutzt die Lampda der Operation und verwendet die Werte.
 	 */
-	double berechne(Operation berechnung, double ersterWert, double zweiterWert) {
+	public double berechne(Operation berechnung, double ersterWert, double zweiterWert) {
 		double ergebnis = 0;
 		if (berechnung != null) {
 			ergebnis = mapMitRechnenArten.get(berechnung).apply(ersterWert,

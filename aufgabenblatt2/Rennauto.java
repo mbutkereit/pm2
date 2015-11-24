@@ -53,7 +53,6 @@ public class Rennauto extends Thread implements Comparable<Rennauto> {
 		double value = Math.round((Math.random() * 4));
 		while (!this.isInterrupted()) {
 			try {
-
 				sleep(800 + ((int) value * 100));
 				this.endZeit = (int) (System.currentTimeMillis() - startTime);
 				gefahreneMeter += this.durchschnittsGeschwindigkeit;

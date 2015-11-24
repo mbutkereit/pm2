@@ -56,6 +56,9 @@ public class RechnerTest {
 	public void testDivisionRechner() {
 		Rechner rechner = new Rechner();
 		double addition = rechner.berechne(Operation.DIVISION, 42, 42);
+		double division = rechner.berechne(Operation.DIVISION, 42, 0);
+		System.out.println(division);
 		assertEquals(addition, 1, DELTA);
+		assertEquals(division, Double.POSITIVE_INFINITY, DELTA);
 	}
 }
