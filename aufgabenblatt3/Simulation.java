@@ -1,9 +1,9 @@
 package aufgabenblatt3;
 
-import aufgabenblatt2.Rennabbruch;
-import aufgabenblatt2.Rennen;
+import java.util.Observable;
 
-public class Simulation implements Runnable {
+
+public class Simulation extends Observable implements Runnable {
 
 	private static final int anzahlDerGleise = 5;
 
@@ -22,22 +22,16 @@ public class Simulation implements Runnable {
 				Thread.sleep(500);
 				Lokfuehrer lokfuehrer1 = new Lokfuehrer(new ArbeitAusparken(this.bahnhof,(int)Math.round(Math.random()*bahnhof.getGleis())));
 				lokfuehrer1.start();
+				this.setChanged();
+				this.notifyObservers(lokfuehrer1);
 				Lokfuehrer lokfuehrer2 = new Lokfuehrer(new ArbeitEinparken(this.bahnhof,new Zug(),(int)Math.round(Math.random()*bahnhof.getGleis())));
 				lokfuehrer2.start();
+				this.setChanged();
+				this.notifyObservers(lokfuehrer2);
 			} catch (InterruptedException e) {
 
 			}
 		}
-	}
-	
-	/**
-	 * Main Methode
-	 */
-	public static void main(String[] args) {
-
-		Simulation simulation = new Simulation();
-		new Thread(simulation).start();
-
 	}
 
 }

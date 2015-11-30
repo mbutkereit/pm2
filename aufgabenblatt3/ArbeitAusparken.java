@@ -34,5 +34,12 @@ public class ArbeitAusparken implements AufgabeStrategy {
 	public String toString() {
 		return "ein Zug vom " + gleis + " Ausgeparkt.";
 	}
+	
+	public int getGleis(){
+		return this.gleis;
+	}
+	public int getJobID(){
+		return AufgabeStrategy.AUSPARKEN;
+	}
 
 }

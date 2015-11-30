@@ -34,5 +34,12 @@ public class ArbeitEinparken implements AufgabeStrategy{
 	public String toString(){
 		return "ein Zug in " + gleis + " Eingeparkt.";
 	}
+	
+	public int getGleis(){
+		return this.gleis;
+	}
+	public int getJobID(){
+		return AufgabeStrategy.EINPARKEN;
+	}
 
 }
