@@ -24,8 +24,8 @@ public class ArbeitAusparken implements AufgabeStrategy {
 	}
 
 	@Override
-	public void arbeiten() {
-		arbeitsPlatz.zugAusfahren(gleis);
+	public void arbeiten() throws LeeresGleisException {
+			arbeitsPlatz.zugBearbeiten(null,gleis);
 	}
 
 	/**
@@ -35,9 +35,16 @@ public class ArbeitAusparken implements AufgabeStrategy {
 		return "ein Zug vom " + gleis + " Ausgeparkt.";
 	}
 	
+	/**
+	 * Gibt das Gleis aus an dem Gearbeitet wird.
+	 */
 	public int getGleis(){
 		return this.gleis;
 	}
+	
+	/**
+	 * Gibt die JobID zurück.
+	 */
 	public int getJobID(){
 		return AufgabeStrategy.AUSPARKEN;
 	}

@@ -7,7 +7,7 @@ package aufgabenblatt3;
 public class Lokfuehrer extends Thread {
 
 	/**
-	 * Die durchzuführende Tätigkeit.
+	 * Die durchzufï¿½hrende Tï¿½tigkeit.
 	 */
 	private AufgabeStrategy aufgabe;
 
@@ -19,22 +19,27 @@ public class Lokfuehrer extends Thread {
 	}
 
 	/**
-	 * Ausführen der Taetigkeit.
+	 * Ausfï¿½hren der Taetigkeit.
 	 */
 	public void run() {
-		this.aufgabe.arbeiten();
-		System.err.println(this);
+		try {
+			this.aufgabe.arbeiten();
+			System.err.println(this);
+		} catch (LeeresGleisException e) {
+			System.err.println("Nichts gemacht.");
+		}
+
 	}
-	
+
 	/**
-	 * Ausführen der Taetigkeit.
+	 * Getter fÃ¼r die Gleisnummer.
 	 */
 	public int getGleis() {
 		return this.aufgabe.getGleis();
 	}
 	
 	/**
-	 * Ausführen der Taetigkeit.
+	 * Getter fÃ¼r die JobID.
 	 */
 	public int getJobID() {
 		return this.aufgabe.getJobID();

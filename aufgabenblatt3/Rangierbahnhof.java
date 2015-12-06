@@ -27,47 +27,59 @@ public class Rangierbahnhof implements Bahnhof {
 		this.gleise = new Zug[anzahlDerGleise];
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public synchronized void zugEinfahren(Zug zug, int gleis) {
+	@Override
+	public synchronized void zugBearbeiten(Zug zug, int gleis) throws LeeresGleisException {
 		if (anzahlDerGleise > gleis) {
-			while (this.gleise[gleis] != zug) {
-				try {
-					if (this.gleise[gleis] == null) {
-						this.gleise[gleis] = zug;
-						notify();
-						break;
-					}
-					wait();
-				} catch (InterruptedException e) {
-					//nothing todo
-				}
+			if (zug != null) {
+				this.zugEinfahren(gleis, zug);
+			} else {
+				this.zugAusfahren(gleis);
 			}
 		}
 	}
-
+	
 	/**
-	 * {@inheritDoc}
+	 * 
+	 * @param gleis
 	 */
-	public synchronized Zug zugAusfahren(int gleis) {
-		Zug ausfahrenderZug = null;
-		if (anzahlDerGleise > gleis) {
-			while (this.gleise[gleis] != null) {
-				try {
-					if (this.gleise[gleis] != null) {
-						ausfahrenderZug = this.gleise[gleis];
-						this.gleise[gleis] = null;
-						notify();
-						break;
-					}
-					wait();
-				} catch (InterruptedException e) {
-					//nothing todo
+	private void  zugAusfahren(int gleis) throws LeeresGleisException{
+		if(this.gleise[gleis] == null){
+			throw new LeeresGleisException("Das Gleis ist leer.");
+		}
+		
+		while (this.gleise[gleis] != null) {
+			try {
+				if (this.gleise[gleis] != null) {
+					this.gleise[gleis] = null;
+					notify();
+					break;
 				}
+				wait();
+			} catch (InterruptedException e) {
+				// nothing todo
+			}
+			}
+	}
+	
+	/**
+	 * 
+	 * @param gleis
+	 * @param zug
+	 */
+	private void zugEinfahren(int gleis , Zug zug){
+		
+		while (this.gleise[gleis] != zug) {
+			try {
+				if (this.gleise[gleis] == null) {
+					this.gleise[gleis] = zug;
+					notify();
+					break;
+				}
+				wait();
+			} catch (InterruptedException e) {
+				// nothing todo
 			}
 		}
-		return ausfahrenderZug;
 	}
 
 	@Override

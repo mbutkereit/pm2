@@ -1,5 +1,8 @@
 package aufgabenblatt3;
 
+/**
+ * Die Arbeit einen Zug einzuparken.
+ */
 public class ArbeitEinparken implements AufgabeStrategy{
 	/**
 	 * Aktueller Bahnhof.
@@ -27,17 +30,27 @@ public class ArbeitEinparken implements AufgabeStrategy{
 		
 	}
 	@Override
-	public void arbeiten() {
-		arbeitsPlatz.zugEinfahren(zug, gleis);
+	public void arbeiten() throws LeeresGleisException {
+			arbeitsPlatz.zugBearbeiten(zug, gleis);
 	}
 	
+	/**
+	 * 
+	 */
 	public String toString(){
 		return "ein Zug in " + gleis + " Eingeparkt.";
 	}
 	
+	/**
+	 * Getter für die Gleisnummer.
+	 */
 	public int getGleis(){
 		return this.gleis;
 	}
+	
+	/**
+	 * Getter für die JobID.
+	 */
 	public int getJobID(){
 		return AufgabeStrategy.EINPARKEN;
 	}
