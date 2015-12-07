@@ -35,18 +35,19 @@ public class Rangierbahnhof implements Bahnhof {
 			} else {
 				this.zugAusfahren(gleis);
 			}
+		}else{
+			throw new IndexOutofBoundsException();
 		}
 	}
 	
 	/**
-	 * 
-	 * @param gleis
+	 * Einen Zug ausfahren.
 	 */
-	private void  zugAusfahren(int gleis) throws LeeresGleisException{
-		if(this.gleise[gleis] == null){
+	private void zugAusfahren(int gleis) throws LeeresGleisException {
+		if (this.gleise[gleis] == null) {
 			throw new LeeresGleisException("Das Gleis ist leer.");
 		}
-		
+
 		while (this.gleise[gleis] != null) {
 			try {
 				if (this.gleise[gleis] != null) {
@@ -56,15 +57,13 @@ public class Rangierbahnhof implements Bahnhof {
 				}
 				wait();
 			} catch (InterruptedException e) {
-				// nothing todo
+				// nichts zu tun
 			}
-			}
+		}
 	}
 	
 	/**
-	 * 
-	 * @param gleis
-	 * @param zug
+	 * Einen Zug einfahren.
 	 */
 	private void zugEinfahren(int gleis , Zug zug){
 		
@@ -77,7 +76,7 @@ public class Rangierbahnhof implements Bahnhof {
 				}
 				wait();
 			} catch (InterruptedException e) {
-				// nothing todo
+				// nichts zu machen.
 			}
 		}
 	}

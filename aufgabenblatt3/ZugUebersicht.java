@@ -37,6 +37,9 @@ public class ZugUebersicht extends Application implements Observer {
 		ZugUebersicht.launch(args);
 	}
 
+	/**
+	 * Konstruktor.
+	 */
 	public ZugUebersicht() {
 		hauptpane = new GridPane();
 		zeichner = new ZeichneBahnhof();
@@ -70,7 +73,6 @@ public class ZugUebersicht extends Application implements Observer {
 				@Override
 				public void run() {
 					Lokfuehrer lokfuehrer = (Lokfuehrer) arg;
-					Simulation simulation = (Simulation) o;
 
 					switch (lokfuehrer.getJobID()) {
 					case AufgabeStrategy.AUSPARKEN:
@@ -85,6 +87,9 @@ public class ZugUebersicht extends Application implements Observer {
 
 				}
 
+				/**
+				 * Entferne ein Element an einen Spezialen Index.
+				 */
 				public void removeNodeByRowColumnIndex(int row, int column) {
 					Node result = null;
 					ObservableList<Node> childrens = hauptpane.getChildren();

@@ -26,7 +26,7 @@ public class Lokfuehrer extends Thread {
 			this.aufgabe.arbeiten();
 			System.err.println(this);
 		} catch (LeeresGleisException e) {
-			System.err.println("Nichts gemacht.");
+			System.err.println("Nichts gemacht da Gleis leer.");
 		}
 
 	}
