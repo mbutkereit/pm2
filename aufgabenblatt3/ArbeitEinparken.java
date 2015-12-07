@@ -3,7 +3,7 @@ package aufgabenblatt3;
 /**
  * Die Arbeit einen Zug einzuparken.
  */
-public class ArbeitEinparken implements AufgabeStrategy{
+public class ArbeitEinparken implements ArbeitStrategy {
 	/**
 	 * Aktueller Bahnhof.
 	 */
@@ -22,37 +22,37 @@ public class ArbeitEinparken implements AufgabeStrategy{
 	/**
 	 * Konstruktor.
 	 */
-	public ArbeitEinparken(Bahnhof arbeitsPlatz,Zug zug, int gleis){
+	public ArbeitEinparken(Bahnhof arbeitsPlatz, Zug zug, int gleis) {
 		this.zug = zug;
 		this.gleis = gleis;
 		this.arbeitsPlatz = arbeitsPlatz;
-		
-		
+
 	}
+
 	@Override
-	public void arbeiten() throws LeeresGleisException {
-			arbeitsPlatz.zugBearbeiten(zug, gleis);
+	public void arbeiten() throws LeeresGleisException,IndexOutOfBoundsException {
+		arbeitsPlatz.zugBearbeiten(zug, gleis);
 	}
-	
+
 	/**
 	 * 
 	 */
-	public String toString(){
+	public String toString() {
 		return "ein Zug in " + gleis + " Eingeparkt.";
 	}
-	
+
 	/**
-	 * Getter fÃ¼r die Gleisnummer.
+	 * Getter für die Gleisnummer.
 	 */
-	public int getGleis(){
+	public int getGleis() {
 		return this.gleis;
 	}
-	
+
 	/**
-	 * Getter fÃ¼r die JobID.
+	 * Getter für die JobID.
 	 */
-	public int getJobID(){
-		return AufgabeStrategy.EINPARKEN;
+	public int getJobID() {
+		return ArbeitStrategy.EINPARKEN;
 	}
 
 }

@@ -6,7 +6,7 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 
 /**
- * Zeichnet alle Komponenten für unseren Bahnhof.
+ * Zeichnet alle Komponenten fuer unseren Bahnhof.
  */
 public class ZeichneBahnhof {
 	

@@ -3,25 +3,20 @@ package aufgabenblatt3;
 import java.util.Observable;
 
 /**
- * 
+ * Die Simulation des Bahnhofes
  */
 public class Simulation extends Observable implements Runnable {
 
 	/**
-	 * 
-	 */
-	private static final int anzahlDerGleise = 5;
-
-	/**
-	 * 
+	 * Die Arbeitsstaette Bahnhof.
 	 */
 	private Bahnhof bahnhof;
 
 	/**
-	 * 
+	 * Konstruktor.
 	 */
-	public Simulation() {
-		this.bahnhof = new Rangierbahnhof(Simulation.anzahlDerGleise);
+	public Simulation(Bahnhof bahnhof) {
+		this.bahnhof = bahnhof;
 	}
 
 	@Override
@@ -37,19 +32,23 @@ public class Simulation extends Observable implements Runnable {
 	}
 
 	/**
-	 * Erstellt einen Lokfuehrer der einen Zufälligen job ausübt.
+	 * Erstellt einen Lokfuehrer der einen Zufaelligen job ausuebt.
 	 */
 	public void erstelleLokfuehrer() {
 		Lokfuehrer lokfuehrer;
-		if (Math.random() > 0.5) {
-			lokfuehrer = new Lokfuehrer(
-					new ArbeitAusparken(this.bahnhof, (int) Math.round(Math.random() * bahnhof.getGleis())));
-		} else {
-			lokfuehrer = new Lokfuehrer(
-					new ArbeitEinparken(this.bahnhof, new Zug(), (int) Math.round(Math.random() * bahnhof.getGleis())));
+		ArbeitStrategy arbeit;
 
+		int randomGleis = (int) (Math.random() * bahnhof.getGleis());
+		
+		if (Math.random() > 0.5) {
+			arbeit = new ArbeitAusparken(this.bahnhof,randomGleis);
+		} else {
+			arbeit =new ArbeitEinparken(this.bahnhof,new Zug(), randomGleis);
 		}
+		
+		lokfuehrer = new Lokfuehrer(arbeit);
 		lokfuehrer.start();
+		
 		this.setChanged();
 		this.notifyObservers(lokfuehrer);
 	}

@@ -9,24 +9,20 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 
 /**
- * Eine Ã¼bersicht Ã¼ber alle hinaus und hineinfahrenden zÃ¼gen.
+ * Eine Übersicht über alle hinaus und hineinfahrenden zügen.
  */
 public class ZugUebersicht extends Application implements Observer {
-
+	
 	/**
-	 * Haptpanel um die ZÃ¼ge anzuzeigen.
+	 * Haptpanel um die Zuege anzuzeigen.
 	 */
 	private GridPane hauptpane;
 
 	/**
-	 * Zeichnet die fÃ¼r den Bahnhof notwendigen sachen.
+	 * Zeichnet die fuer den Bahnhof notwendigen sachen.
 	 */
 	private ZeichneBahnhof zeichner;
 
@@ -51,12 +47,10 @@ public class ZugUebersicht extends Application implements Observer {
 		;
 		hauptBuehne.setScene(new Scene(hauptpane, 300, 250));
 
-		Simulation simulation = new Simulation();
+		Simulation simulation = new Simulation(new Rangierbahnhof(Bahnhof.ANZAHL_DER_GLEISE));
 		simulation.addObserver(this);
 
-		int anzahlDerGleise = 6;
-
-		for (int i = 0; i < anzahlDerGleise; i++) {
+		for (int i = 0; i <  Bahnhof.ANZAHL_DER_GLEISE; i++) {
 			hauptpane.add(this.zeichner.createAbstellGleis(), 0, i);
 		}
 
@@ -75,13 +69,17 @@ public class ZugUebersicht extends Application implements Observer {
 					Lokfuehrer lokfuehrer = (Lokfuehrer) arg;
 
 					switch (lokfuehrer.getJobID()) {
-					case AufgabeStrategy.AUSPARKEN:
-						this.removeNodeByRowColumnIndex(lokfuehrer.getGleis(), 0);
-						hauptpane.add(zeichner.createAbstellGleis(), 0, lokfuehrer.getGleis());
+					case ArbeitStrategy.AUSPARKEN:
+						this.removeNodeByRowColumnIndex(lokfuehrer.getGleis(),
+								0);
+						hauptpane.add(zeichner.createAbstellGleis(), 0,
+								lokfuehrer.getGleis());
 						break;
-					case AufgabeStrategy.EINPARKEN:
-						this.removeNodeByRowColumnIndex(lokfuehrer.getGleis(), 0);
-						hauptpane.add(zeichner.createBesetzterAbstellGleis(), 0, lokfuehrer.getGleis());
+					case ArbeitStrategy.EINPARKEN:
+						this.removeNodeByRowColumnIndex(lokfuehrer.getGleis(),
+								0);
+						hauptpane.add(zeichner.createBesetzterAbstellGleis(),
+								0, lokfuehrer.getGleis());
 						break;
 					}
 
@@ -94,7 +92,8 @@ public class ZugUebersicht extends Application implements Observer {
 					Node result = null;
 					ObservableList<Node> childrens = hauptpane.getChildren();
 					for (Node node : childrens) {
-						if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column) {
+						if (GridPane.getRowIndex(node) == row
+								&& GridPane.getColumnIndex(node) == column) {
 							result = node;
 							break;
 						}

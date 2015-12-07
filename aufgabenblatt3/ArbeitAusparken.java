@@ -3,8 +3,8 @@ package aufgabenblatt3;
 /**
  * Die Arbeit einen Zug auszuparken.
  */
-public class ArbeitAusparken implements AufgabeStrategy {
-	
+public class ArbeitAusparken implements ArbeitStrategy {
+
 	/**
 	 * Aktueller Bahnhof.
 	 */
@@ -24,8 +24,8 @@ public class ArbeitAusparken implements AufgabeStrategy {
 	}
 
 	@Override
-	public void arbeiten() throws LeeresGleisException {
-			arbeitsPlatz.zugBearbeiten(null,gleis);
+	public void arbeiten() throws LeeresGleisException,IndexOutOfBoundsException {
+		arbeitsPlatz.zugBearbeiten(null, gleis);
 	}
 
 	/**
@@ -34,19 +34,19 @@ public class ArbeitAusparken implements AufgabeStrategy {
 	public String toString() {
 		return "ein Zug vom " + gleis + " Ausgeparkt.";
 	}
-	
+
 	/**
 	 * Gibt das Gleis aus an dem Gearbeitet wird.
 	 */
-	public int getGleis(){
+	public int getGleis() {
 		return this.gleis;
 	}
-	
+
 	/**
 	 * Gibt die JobID zurück.
 	 */
-	public int getJobID(){
-		return AufgabeStrategy.AUSPARKEN;
+	public int getJobID() {
+		return ArbeitStrategy.AUSPARKEN;
 	}
 
 }

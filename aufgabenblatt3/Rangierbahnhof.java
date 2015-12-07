@@ -9,15 +9,11 @@ public class Rangierbahnhof implements Bahnhof {
 	 * Ein Array von allen Gleisen.
 	 */
 	private Zug[] gleise;
-	
-	private int anzahlDerGleise;
 
 	/**
-	 * Konstruktor.
+	 * Anzahl der Gleise.
 	 */
-	public Rangierbahnhof() {
-		this(42);
-	}
+	private int anzahlDerGleise;
 
 	/**
 	 * Konstruktor.
@@ -28,18 +24,19 @@ public class Rangierbahnhof implements Bahnhof {
 	}
 
 	@Override
-	public synchronized void zugBearbeiten(Zug zug, int gleis) throws LeeresGleisException {
+	public synchronized void zugBearbeiten(Zug zug, int gleis)
+			throws LeeresGleisException, IndexOutOfBoundsException{
 		if (anzahlDerGleise > gleis) {
 			if (zug != null) {
 				this.zugEinfahren(gleis, zug);
 			} else {
 				this.zugAusfahren(gleis);
 			}
-		}else{
-			throw new IndexOutofBoundsException();
+		} else {
+			throw new IndexOutOfBoundsException();
 		}
 	}
-	
+
 	/**
 	 * Einen Zug ausfahren.
 	 */
@@ -61,12 +58,12 @@ public class Rangierbahnhof implements Bahnhof {
 			}
 		}
 	}
-	
+
 	/**
 	 * Einen Zug einfahren.
 	 */
-	private void zugEinfahren(int gleis , Zug zug){
-		
+	private void zugEinfahren(int gleis, Zug zug) {
+
 		while (this.gleise[gleis] != zug) {
 			try {
 				if (this.gleise[gleis] == null) {

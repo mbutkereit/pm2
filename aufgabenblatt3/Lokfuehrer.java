@@ -7,19 +7,19 @@ package aufgabenblatt3;
 public class Lokfuehrer extends Thread {
 
 	/**
-	 * Die durchzuf�hrende T�tigkeit.
+	 * Die durchzufuehrende T�tigkeit.
 	 */
-	private AufgabeStrategy aufgabe;
+	private ArbeitStrategy aufgabe;
 
 	/**
 	 * Konstruktor.
 	 */
-	public Lokfuehrer(AufgabeStrategy aufgabe) {
-		this.aufgabe =aufgabe;
+	public Lokfuehrer(ArbeitStrategy aufgabe) {
+		this.aufgabe = aufgabe;
 	}
 
 	/**
-	 * Ausf�hren der Taetigkeit.
+	 * Auszufuehrende der Taetigkeit.
 	 */
 	public void run() {
 		try {
@@ -32,14 +32,14 @@ public class Lokfuehrer extends Thread {
 	}
 
 	/**
-	 * Getter für die Gleisnummer.
+	 * Getter fuer die Gleisnummer.
 	 */
 	public int getGleis() {
 		return this.aufgabe.getGleis();
 	}
-	
+
 	/**
-	 * Getter für die JobID.
+	 * Getter fuer die JobID.
 	 */
 	public int getJobID() {
 		return this.aufgabe.getJobID();
