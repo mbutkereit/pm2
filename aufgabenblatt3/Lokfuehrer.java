@@ -22,13 +22,8 @@ public class Lokfuehrer extends Thread {
 	 * Auszufuehrende der Taetigkeit.
 	 */
 	public void run() {
-		try {
-			this.aufgabe.arbeiten();
-			System.err.println(this);
-		} catch (LeeresGleisException e) {
-			System.err.println("Nichts gemacht da Gleis leer.");
-		}
-
+		this.aufgabe.arbeiten();
+		System.err.println(this);
 	}
 
 	/**

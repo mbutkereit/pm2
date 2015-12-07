@@ -17,9 +17,9 @@ public interface ArbeitStrategy {
 	
 	/**
 	 * Funktion um die Arbeit zu erledigen.
-	 * @throws LeeresGleisException,IndexOutOfBoundsException
+	 * @throws IndexOutOfBoundsException
 	 */
-	public void arbeiten() throws LeeresGleisException,IndexOutOfBoundsException;
+	public void arbeiten() throws IndexOutOfBoundsException;
 	
 	/**
 	 *  Gibt die Gleisnummer zurueck an der gearbeitet wird.

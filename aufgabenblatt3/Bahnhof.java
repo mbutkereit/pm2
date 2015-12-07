@@ -12,9 +12,9 @@ public interface Bahnhof {
 	/**
 	 * Die Ausfahrt eines Zuges.
 	 * 
-	 * @throws LeeresGleisException,IndexOutOfBoundsException
+	 * @throws IndexOutOfBoundsException
 	 */
-	public void zugBearbeiten(Zug zug, int gleis) throws LeeresGleisException,IndexOutOfBoundsException;
+	public void zugBearbeiten(Zug zug, int gleis) throws IndexOutOfBoundsException;
 
 	/**
 	 * Die Anzahl der Gleise.

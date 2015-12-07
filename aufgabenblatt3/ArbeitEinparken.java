@@ -4,6 +4,7 @@ package aufgabenblatt3;
  * Die Arbeit einen Zug einzuparken.
  */
 public class ArbeitEinparken implements ArbeitStrategy {
+	
 	/**
 	 * Aktueller Bahnhof.
 	 */
@@ -30,12 +31,12 @@ public class ArbeitEinparken implements ArbeitStrategy {
 	}
 
 	@Override
-	public void arbeiten() throws LeeresGleisException,IndexOutOfBoundsException {
+	public void arbeiten() throws IndexOutOfBoundsException {
 		arbeitsPlatz.zugBearbeiten(zug, gleis);
 	}
 
 	/**
-	 * 
+	 *  Konvertiert zum String.
 	 */
 	public String toString() {
 		return "ein Zug in " + gleis + " Eingeparkt.";

@@ -25,7 +25,7 @@ public class Rangierbahnhof implements Bahnhof {
 
 	@Override
 	public synchronized void zugBearbeiten(Zug zug, int gleis)
-			throws LeeresGleisException, IndexOutOfBoundsException{
+			throws IndexOutOfBoundsException{
 		if (anzahlDerGleise > gleis) {
 			if (zug != null) {
 				this.zugEinfahren(gleis, zug);
@@ -40,16 +40,12 @@ public class Rangierbahnhof implements Bahnhof {
 	/**
 	 * Einen Zug ausfahren.
 	 */
-	private void zugAusfahren(int gleis) throws LeeresGleisException {
-		if (this.gleise[gleis] == null) {
-			throw new LeeresGleisException("Das Gleis ist leer.");
-		}
-
-		while (this.gleise[gleis] != null) {
+	private void zugAusfahren(int gleis) {
+		while (true) {
 			try {
 				if (this.gleise[gleis] != null) {
 					this.gleise[gleis] = null;
-					notify();
+					notifyAll();
 					break;
 				}
 				wait();
@@ -68,7 +64,7 @@ public class Rangierbahnhof implements Bahnhof {
 			try {
 				if (this.gleise[gleis] == null) {
 					this.gleise[gleis] = zug;
-					notify();
+					notifyAll();
 					break;
 				}
 				wait();

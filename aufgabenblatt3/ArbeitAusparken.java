@@ -24,7 +24,7 @@ public class ArbeitAusparken implements ArbeitStrategy {
 	}
 
 	@Override
-	public void arbeiten() throws LeeresGleisException,IndexOutOfBoundsException {
+	public void arbeiten() throws IndexOutOfBoundsException {
 		arbeitsPlatz.zugBearbeiten(null, gleis);
 	}
 
