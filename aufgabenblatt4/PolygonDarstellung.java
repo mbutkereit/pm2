@@ -76,6 +76,7 @@ public class PolygonDarstellung extends BorderPane implements
 		ellipse.fillProperty().set(color);
 		this.getChildren().add(ellipse);
 	}
+	
 	/**
 	 * Zeichnet alle Polygone.
 	 */

@@ -1,5 +1,6 @@
 package aufgabenblatt4;
 
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 /**
@@ -20,11 +21,20 @@ public class PolygonListController {
 		commandRouter.addSubscriber(new BewegeCommand(polygonVerwalter));
 
 		view.setTableObservable(polygonVerwalter);
-		
+
 		// Events Registrieren.
 		view.setOnSetzenButton(polygonVerwalter::uebernehmenAktivesElement);
-		view.setOnEingabeButton(event -> commandRouter.handleEingabe(view.getInputFieldValue()));
-		
+		view.setOnEingabeButton(event -> {
+			try {
+				commandRouter.handleEingabe(view.getInputFieldValue());
+			} catch (Exception e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle(e.getClass().getSimpleName());
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+			}
+		});
+
 		view.getViewValue(primaryStage);
 
 		primaryStage.show();
